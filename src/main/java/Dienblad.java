@@ -3,15 +3,15 @@ import java.util.Iterator;
 import java.util.Stack;
 
 public class Dienblad {
-    private ArrayList<Artikel> artikelen;
-    Persoon klant;
+    private ArrayList<Artikel> artikelen = new ArrayList<>();
+    private Persoon klant;
+
     /**
      * Constructor
      */
     public Dienblad() {
         // method body omitted
-        artikelen = new ArrayList<>();
-        klant = new Persoon();
+        
     }
 
     /**
@@ -60,7 +60,7 @@ public class Dienblad {
         return prijs;
     }
 
-    public Persoon getKlant() {return klant;}
+    public String getKlant() {return klant.toString();}
 
 
     public String getKlantNaam() { return klant.getVoornaam() + " " + klant.getAchternaam(); }
