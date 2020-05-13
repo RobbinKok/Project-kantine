@@ -28,4 +28,8 @@ public class Artikel {
         this.prijs = prijs;
     }
 
+    @Override
+    public String toString() {
+        return naam + ": €" + prijs;
+    }
 }

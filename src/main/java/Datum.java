@@ -85,7 +85,9 @@ public class Datum {
 	 * @return Geboortedatum
 	 */
 	public String getDatumAsString() {
-		// TODO
-		return "";
+		if(!(dag==0)){
+			return dag + "/" + maand + "/" + jaar;
+		}
+		return "Onbekend";
 	}
 }
