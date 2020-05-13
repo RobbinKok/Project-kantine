@@ -2,12 +2,13 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class KassaRij {
-
+    private ArrayList<Dienblad> personen;
     /**
      * Constructor
      */
     public KassaRij() {
         // method body omitted
+        personen = new ArrayList<>();
     }
 
     /**
@@ -17,6 +18,7 @@ public class KassaRij {
      */
     public void sluitAchteraan(Dienblad klant) {
         // method body omitted
+        personen.add(personen.size(), klant);
     }
 
     /**
@@ -27,6 +29,8 @@ public class KassaRij {
      */
     public Dienblad eerstePersoonInRij() {
         // method body omitted
+        if(!personen.isEmpty()){return personen.get(0);}
+        else{return null;}
     }
 
     /**
@@ -36,5 +40,7 @@ public class KassaRij {
      */
     public boolean erIsEenRij() {
         // method body omitted
+        if (personen.isEmpty() == true){ return false;}
+        else {return true;}
     }
 }
