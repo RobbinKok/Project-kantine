@@ -77,10 +77,4 @@ public class Persoon {
         return bsn + " " + voornaam + " " + achternaam + " " + getGeboortedatum() + " " + getGeslacht();
     }
 
-    public static void main(String[] args){
-        Persoon p1 = new Persoon(1, "Jan", "Hein", new Datum(3, 5, 1997), 'M');
-        System.out.println(p1.getGeslacht());
-        System.out.println(p1.getGeboortedatum());
-        System.out.println(p1);
-    }
 }
