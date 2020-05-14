@@ -3,8 +3,8 @@ import java.util.Iterator;
 import java.util.Stack;
 
 public class Dienblad {
-    private ArrayList<Artikel> artikelen = new ArrayList<>();
-    private Persoon klant;
+    public ArrayList<Artikel> artikelen = new ArrayList<>();
+    public Persoon klant;
 
     /**
      * Constructor

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class KassaRij {
-    private ArrayList<Dienblad> personen;
+    public ArrayList<Dienblad> personen;
     /**
      * Constructor
      */
