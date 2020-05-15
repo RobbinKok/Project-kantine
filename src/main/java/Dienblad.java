@@ -11,7 +11,7 @@ public class Dienblad {
      */
     public Dienblad() {
         // method body omitted
-        
+
     }
 
     /**
@@ -28,7 +28,6 @@ public class Dienblad {
      * @param artikel
      */
     public void voegToe(Artikel artikel) {
-        // method body omitted
         artikelen.add(artikel);
     }
 
@@ -38,8 +37,6 @@ public class Dienblad {
      * @return Het aantal artikelen
      */
     public int getAantalArtikelen() {
-        // method body omitted
-
         return artikelen.size();
     }
 
@@ -49,24 +46,23 @@ public class Dienblad {
      * @return De totaalprijs
      */
     public double getTotaalPrijs() {
-        // method body omitted
-
         float prijs = 0;
         for (Artikel a: artikelen) {
-            a.getPrijs();
-            prijs = prijs + a.getPrijs();
-
+            prijs += a.getPrijs();
         }
         return prijs;
     }
 
     public String getKlant() {return klant.toString();}
 
-
     public String getKlantNaam() { return klant.getVoornaam() + " " + klant.getAchternaam(); }
 
     public String getKlantGeslacht() { return klant.getGeslacht(); }
 
     public int getKlantBSN() { return klant.getBsn();}
+
+    public void setKlant(Persoon klant) {
+        this.klant = klant;
+    }
 }
 
