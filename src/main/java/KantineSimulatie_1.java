@@ -35,10 +35,10 @@ public class KantineSimulatie_1 {
             kantine.verwerkRijVoorKassa();
 
             // toon dagtotalen (artikelen en geld in kassa)
-            kantine.hoeveelheidGeldInKassa();
+            kantine.getKassa().hoeveelheidGeldInKassa();
 
             // reset de kassa voor de volgende dag
-            kantine.resetKassa();
+            kantine.getKassa().resetKassa();
         }
     }
 
