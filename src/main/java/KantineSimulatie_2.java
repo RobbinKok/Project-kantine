@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class KantineSimulatie {
+public class KantineSimulatie_2 {
 
     // kantine
     private Kantine kantine;
@@ -33,11 +33,15 @@ public class KantineSimulatie {
     private static final int MIN_ARTIKELEN_PER_PERSOON = 1;
     private static final int MAX_ARTIKELEN_PER_PERSOON = 4;
 
+    public static final int DAGEN = 7;
+
     /**
      * Constructor
-     *
+     * Maakt een Kantine aan met een aanbod van de artikelen met prijzen zoals bepaald in de statische constanten
+     * van de klasse. Het aanbod van deze artikelen is, voor elk artikel, een willekeurige waarde tussen de
+     * statische constanten MIN_ARTIKELEN_PER_SOORT en MAX_ARTIKELEN_PER_SOORT.
      */
-    public KantineSimulatie() {
+    public KantineSimulatie_2() {
         kantine = new Kantine();
         random = new Random();
         int[] hoeveelheden =
@@ -67,7 +71,11 @@ public class KantineSimulatie {
 
     /**
      * Methode om een random getal tussen min(incl) en max(incl) te genereren.
-     *
+     * Gebruikt de nextInt(int bound) methode in Java.util.Random. Deze methode geeft een willekeurige integer
+     * tussen 0 (inclusive) en de bound (exclusive) terug. Dit betekent dat 0 wel gegeven kan worden, maar de bound
+     * niet. Als nextInt 0 geeft, krijgen we 0 + min = min terug, wat de laagste waarde die we willen krijgen is.
+     * Als nextInt de hoogst mogelijke waarde geeft, krijgen we ((max - min + 1) - 1) + min = max. De +1 in de bound
+     * zorgt ervoor dat max inclusive is, terwijl bound van nextInt dat niet is.
      * @param min
      * @param max
      * @return Een random getal
@@ -88,7 +96,6 @@ public class KantineSimulatie {
 
         for (int i = 0; i < indexen.length; i++) {
             artikelen[i] = artikelnamen[indexen[i]];
-
         }
 
         return artikelen;
@@ -103,20 +110,21 @@ public class KantineSimulatie {
     public void simuleer(int dagen) {
         // for lus voor dagen
         for(int i = 0; i < dagen; i++) {
-
             // bedenk hoeveel personen vandaag binnen lopen
-            int aantalpersonen = ... ;
+            int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
 
             // laat de personen maar komen...
             for (int j = 0; j < aantalpersonen; j++) {
-
                 // maak persoon en dienblad aan, koppel ze
+                Dienblad klant = new Dienblad(new Persoon(j, "John", "Doe",
+                        new Datum(1, 1, 1970), 'M'));
+
                 // en bedenk hoeveel artikelen worden gepakt
-                int aantalartikelen = ... ;
+                int aantalartikelen = getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);
 
                 // genereer de "artikelnummers", dit zijn indexen
                 // van de artikelnamen
-                array int[] tepakken = getRandomArray(
+                int[] tepakken = getRandomArray(
                         aantalartikelen, 0, AANTAL_ARTIKELEN-1);
 
                 // vind de artikelnamen op basis van
@@ -125,17 +133,37 @@ public class KantineSimulatie {
 
                 // loop de kantine binnen, pak de gewenste
                 // artikelen, sluit aan
+                kantine.loopPakSluitAan(klant, artikelen);
 
             }
 
             // verwerk rij voor de kassa
+            kantine.verwerkRijVoorKassa();
 
-            // druk de dagtotalen af en hoeveel personen binnen
-
-            // zijn gekomen
+            // druk de dagtotalen af en hoeveel personen binnenzijn gekomen
+            System.out.println("Er waren vandaag " + aantalpersonen + " klanten. \nIn totaal hebben ze " +
+                    kantine.getKassa().aantalArtikelen() + " artikelen gekocht, voor een totaalbedrag van €" +
+                    kantine.getKassa().hoeveelheidGeldInKassa() + ".\n");
 
             // reset de kassa voor de volgende dag
+            kantine.getKassa().resetKassa();
 
         }
     }
+
+    /**
+     * Start een simulatie
+     */
+    public static void main(String[] args) {
+        int dagen;
+
+        if (args.length == 0) {
+            dagen = DAGEN;
+        } else {
+            dagen = Integer.parseInt(args[0]);
+        }
+        KantineSimulatie_2 simulatie = new KantineSimulatie_2();
+        simulatie.simuleer(dagen);
+    }
+
 }
