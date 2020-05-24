@@ -7,7 +7,13 @@ public class Administratie {
      * @return het gemiddelde
      */
     public double berekenGemiddeldAantal(int[] aantal) {
-        // method body omitted
+        int total = 0;
+        for (int i = 0; i < aantal.length; i++){
+            total += aantal[i];
+        }
+        int gemiddeldAantal = total / aantal.length;
+
+        return gemiddeldAantal;
     }
 
     /**
@@ -17,7 +23,12 @@ public class Administratie {
      * @return het gemiddelde
      */
     public double berekenGemiddeldeOmzet(double[] omzet) {
-        // method body omitted
+        double total = 0;
+        for (int i = 0; i < omzet.length; i++){
+            total += omzet[i];
+        }
+
+        return total / omzet.length;
     }
 
     /**
