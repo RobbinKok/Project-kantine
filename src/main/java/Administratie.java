@@ -15,6 +15,13 @@ public class Administratie {
     }
 
     /**
+     * Week3 opgave 2b:
+     * De uitkomst van de 2 methoden klopt inderdaad met de gegeven input
+     * Bij berekenGemiddeldeOmzet is de uitkomst: 508.2833333333333
+     * Bij berekenGemiddeldAantal is de uitkomst: 40.833333333333336
+     */
+
+    /**
      * Deze methode berekent van de double array omzet de gemiddelde waarde
      *
      * @param omzet
