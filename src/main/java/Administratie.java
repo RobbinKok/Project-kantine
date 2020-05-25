@@ -11,9 +11,7 @@ public class Administratie {
         for (int i = 0; i < aantal.length; i++){
             total += aantal[i];
         }
-        int gemiddeldAantal = total / aantal.length;
-
-        return gemiddeldAantal;
+        return (double)total / (double)aantal.length;
     }
 
     /**
