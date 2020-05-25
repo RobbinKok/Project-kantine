@@ -6,7 +6,7 @@ public class Administratie {
      * @param aantal
      * @return het gemiddelde
      */
-    public double berekenGemiddeldAantal(int[] aantal) {
+    static double berekenGemiddeldAantal(int[] aantal) {
         int total = 0;
         for (int i = 0; i < aantal.length; i++){
             total += aantal[i];
@@ -22,12 +22,22 @@ public class Administratie {
      */
 
     /**
+     * Week3 opgave 2c:
+     * Dit komt omdat de methoden van administratie input van de andere klassen verwacht
+     */
+
+    /**
+     * Week3 opgave 2d:
+     * Het heeft nut om de methoden static te maken, aangezien je ze wilt aanroepen zonder dat er een object van Administratie bestaat
+     */
+
+    /**
      * Deze methode berekent van de double array omzet de gemiddelde waarde
      *
      * @param omzet
      * @return het gemiddelde
      */
-    public double berekenGemiddeldeOmzet(double[] omzet) {
+    static double berekenGemiddeldeOmzet(double[] omzet) {
         double total = 0;
         for (int i = 0; i < omzet.length; i++){
             total += omzet[i];
