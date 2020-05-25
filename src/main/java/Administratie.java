@@ -1,6 +1,11 @@
 public class Administratie {
 
     /**
+     * Door de constructor private te maken kunnen andere klasses geen administratie aanmaken
+     */
+    private Administratie() {}
+
+    /**
      * Deze methode berekent van de int array aantal de gemiddelde waarde
      *
      * @param aantal
