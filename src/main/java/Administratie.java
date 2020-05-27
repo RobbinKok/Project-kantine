@@ -1,5 +1,7 @@
 public class Administratie {
 
+    private final int days_in_week = 7;
+
     /**
      * Door de constructor private te maken kunnen andere klasses geen administratie aanmaken
      */
@@ -59,7 +61,7 @@ public class Administratie {
      */
 
     public static double[] berekenDagOmzet(double[] omzet) {
-        double[] temp = new double[7];
+        double[] temp = new double[days_in_week];
         for(int i = 0; i < 7; i++) {
             int j = 0;
             while ( j < omzet.length ) {
