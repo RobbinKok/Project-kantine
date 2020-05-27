@@ -61,12 +61,11 @@ public class Administratie {
     public static double[] berekenDagOmzet(double[] omzet) {
         double[] temp = new double[7];
         for(int i = 0; i < 7; i++) {
-
             int j = 0;
-            while ( ... ) {
+            while ( j < omzet.length ) {
                 temp[i] += omzet[i + 7 * j];
 
-                // omitted
+                j++;
 
             }
         }
