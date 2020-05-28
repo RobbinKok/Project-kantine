@@ -1,6 +1,6 @@
 public class Administratie {
 
-    private final int days_in_week = 7;
+    private  final int DAYS_IN_WEEK = 7;
 
     /**
      * Door de constructor private te maken kunnen andere klasses geen administratie aanmaken
@@ -39,6 +39,22 @@ public class Administratie {
      */
 
     /**
+     * Week 3 opgave 2G:
+     * Door er een static variable van te maken heb je veel meer controle over het aantal dagen.
+     */
+
+    /**
+     * Week 3 opgave 2H:
+     * De compiler klaagt hierover, omdat je geen non static variablen kan aanroepen in een static funcite
+     * Dit kan je oplossen door de variabele static te maken.
+     */
+
+    /**
+     * Week 3 opgave 2I:
+     * Het porbleem dat nu weer word geintroduceerd is het feit dat je nu nog niet kan veranderen via een setter
+     */
+
+    /**
      * Deze methode berekent van de double array omzet de gemiddelde waarde
      *
      * @param omzet
@@ -73,15 +89,4 @@ public class Administratie {
         }
         return temp;
     }
-
-    /**
-     * Week 3 opgave 2G:
-     * Door er een static variable van te maken heb je veel meer controle over het aantal dagen.
-     */
-
-    /**
-     * Week 3 opgave 2H:
-     * De compiler klaagt hierover, omdat je geen non static variablen kan aanroepen in een static funcite
-     * Dit kan je oplossen door de variabele static te maken.
-     */
 }
