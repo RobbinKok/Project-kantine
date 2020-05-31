@@ -1,9 +1,10 @@
 public class Administratie {
 
-    private  final int DAYS_IN_WEEK = 7;
+    private final static int DAYS_IN_WEEK = 7;
 
     /**
-     * Door de constructor private te maken kunnen andere klasses geen administratie aanmaken
+     * Week3 opgave 3E:
+     * Door de constructor private te maken kunnen andere klassen geen administratie aanmaken
      */
     private Administratie() {}
 
@@ -15,8 +16,8 @@ public class Administratie {
      */
     static double berekenGemiddeldAantal(int[] aantal) {
         int total = 0;
-        for (int i = 0; i < aantal.length; i++){
-            total += aantal[i];
+        for (int value : aantal) {
+            total += value;
         }
         return (double)total / (double)aantal.length;
     }
@@ -30,28 +31,28 @@ public class Administratie {
 
     /**
      * Week3 opgave 2C:
-     * Dit komt omdat de methoden van administratie input van de andere klassen verwacht
+     * Als er geen constructor is maakt Java automatisch een constructor zonder argumenten aan.
      */
 
     /**
      * Week3 opgave 2D:
-     * Het heeft nut om de methoden static te maken, aangezien je ze wilt aanroepen zonder dat er een object van Administratie bestaat
+     * De methodes kunnen static zijn omdat ze werken zonder variabelen van een object van Administratie
      */
 
     /**
      * Week 3 opgave 2G:
-     * Door er een static variable van te maken heb je veel meer controle over het aantal dagen.
+     * Het keyword "final" zorgt ervoor dat een variabele maar één keer een waarde toegekend kan krijgen.
      */
 
     /**
      * Week 3 opgave 2H:
-     * De compiler klaagt hierover, omdat je geen non static variablen kan aanroepen in een static funcite
+     * De compiler klaagt hierover, omdat je geen non static variabelen kan aanroepen in een static methode
      * Dit kan je oplossen door de variabele static te maken.
      */
 
     /**
      * Week 3 opgave 2I:
-     * Het porbleem dat nu weer word geintroduceerd is het feit dat je nu nog niet kan veranderen via een setter
+     * Het probleem dat nu weer word geïntroduceerd is dat DAYS_IN_WEEK veranderd zou kunnen worden.
      */
 
     /**
@@ -62,8 +63,8 @@ public class Administratie {
      */
     static double berekenGemiddeldeOmzet(double[] omzet) {
         double total = 0;
-        for (int i = 0; i < omzet.length; i++){
-            total += omzet[i];
+        for (double value : omzet) {
+            total += value;
         }
 
         return total / omzet.length;
@@ -77,14 +78,12 @@ public class Administratie {
      */
 
     public static double[] berekenDagOmzet(double[] omzet) {
-        double[] temp = new double[days_in_week];
-        for(int i = 0; i < 7; i++) {
+        double[] temp = new double[DAYS_IN_WEEK];
+        for(int i = 0; i < DAYS_IN_WEEK; i++) {
             int j = 0;
-            while ( j < omzet.length ) {
-                temp[i] += omzet[i + 7 * j];
-
+            while ( i + DAYS_IN_WEEK * j < omzet.length ) {
+                temp[i] += omzet[i + DAYS_IN_WEEK * j];
                 j++;
-
             }
         }
         return temp;
