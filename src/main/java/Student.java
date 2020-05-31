@@ -1,12 +1,13 @@
 public class Student extends  Persoon {
 
-    private int studentNummer = 0;
-    private String studieRichting = "";
+    private int studentNummer;
+    private String studieRichting;
 
     public Student() {
     }
 
-    public Student(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht, int studentNummer, String studieRichting) {
+    public Student(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht,
+                   int studentNummer, String studieRichting) {
         super(bsn, voornaam, achternaam, geboortedatum, geslacht);
         this.studentNummer = studentNummer;
         this.studieRichting = studieRichting;

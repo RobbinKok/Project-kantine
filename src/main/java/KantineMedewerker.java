@@ -1,22 +1,23 @@
 public class KantineMedewerker extends Persoon{
 
-    private int mederWerkersnummer = 0;
+    private int medewerkersnummer;
     private boolean magAchterKassaStaan;
 
     public KantineMedewerker() {}
 
-    public KantineMedewerker(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht, int mederWerkersnummer, boolean magAchterKassaStaan) {
+    public KantineMedewerker(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht,
+                             int medewerkersnummer, boolean magAchterKassaStaan) {
         super(bsn, voornaam, achternaam, geboortedatum, geslacht);
-        this.mederWerkersnummer = mederWerkersnummer;
+        this.medewerkersnummer = medewerkersnummer;
         this.magAchterKassaStaan = magAchterKassaStaan;
     }
 
-    public int getMederWerkersnummer() {
-        return mederWerkersnummer;
+    public int getMedewerkersnummer() {
+        return medewerkersnummer;
     }
 
-    public void setMederWerkersnummer(int mederWerkersnummer) {
-        this.mederWerkersnummer = mederWerkersnummer;
+    public void setMedewerkersnummer(int medewerkersnummer) {
+        this.medewerkersnummer = medewerkersnummer;
     }
 
     public boolean isMagAchterKassaStaan() {

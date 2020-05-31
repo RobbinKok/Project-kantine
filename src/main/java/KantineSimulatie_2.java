@@ -109,6 +109,9 @@ public class KantineSimulatie_2 {
      */
     public void simuleer(int dagen) {
         // for lus voor dagen
+        int[] aantalGekochteArtikelen = new int[dagen];
+        double[] omzet = new double[dagen];
+
         for(int i = 0; i < dagen; i++) {
             // bedenk hoeveel personen vandaag binnen lopen
             int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
@@ -116,8 +119,18 @@ public class KantineSimulatie_2 {
             // laat de personen maar komen...
             for (int j = 0; j < aantalpersonen; j++) {
                 // maak persoon en dienblad aan, koppel ze
-                Dienblad klant = new Dienblad(new Persoon(j, "John", "Doe",
-                        new Datum(1, 1, 1970), 'M'));
+                Dienblad klant = null;
+                int n = random.nextInt(100);
+                if(n<89) {
+                    klant = new Dienblad(new Student(j, "John", "Doe",
+                            new Datum(1, 1, 2000), 'M', j*33, "ICT"));
+                }else if(n<99){
+                    klant = new Dienblad(new Docent(j, "Jan", "Jansen",
+                            new Datum(10, 10, 1970), 'M', "JAJA", "ICT"));
+                }else if(n==99){
+                    klant = new Dienblad(new KantineMedewerker(j, "Piet", "Hein",
+                            new Datum(5, 5, 1980), 'M', j*33, true));
+                }
 
                 // en bedenk hoeveel artikelen worden gepakt
                 int aantalartikelen = getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);
@@ -135,6 +148,8 @@ public class KantineSimulatie_2 {
                 // artikelen, sluit aan
                 kantine.loopPakSluitAan(klant, artikelen);
 
+                System.out.println(klant.getKlant());
+
             }
 
             // verwerk rij voor de kassa
@@ -145,10 +160,22 @@ public class KantineSimulatie_2 {
                     kantine.getKassa().aantalArtikelen() + " artikelen gekocht, voor een totaalbedrag van €" +
                     kantine.getKassa().hoeveelheidGeldInKassa() + ".\n");
 
+            aantalGekochteArtikelen[i] = kantine.getKassa().aantalArtikelen();
+            omzet[i] = kantine.getKassa().hoeveelheidGeldInKassa();
+
             // reset de kassa voor de volgende dag
             kantine.getKassa().resetKassa();
 
         }
+
+        System.out.println("Het gemiddeld aantal gekochte artikelen is " +
+                Administratie.berekenGemiddeldAantal(aantalGekochteArtikelen));
+        System.out.println("De gemiddelde omzet is €" + Administratie.berekenGemiddeldeOmzet(omzet));
+        double[] dagomzet = Administratie.berekenDagOmzet(omzet);
+        System.out.println("De omzet op maandagen was €" + dagomzet[0] + ". \nDe omzet op dinsdagen was € " + dagomzet[1] +
+                ". \nDe omzet op woensdagen was €" + dagomzet[2] + ". \nDe omzet op donderdagen was € " + dagomzet[3] +
+                ". \nDe omzet op vrijdagen was € " + dagomzet[4] + ". \nDe omzet op zaterdagen was € " + dagomzet[5] +
+                ". \nDe omzet op zondagen was € " + dagomzet[6] + ".");
     }
 
     /**

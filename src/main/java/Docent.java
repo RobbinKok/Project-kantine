@@ -1,10 +1,16 @@
 public class Docent extends Persoon{
-    private String afkorting = "";
-    private String afdeling = "";
+    private String afkorting;
+    private String afdeling;
 
     public Docent() {}
 
-    public Docent(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht, String afkorting, String afdeling) {
+    /**
+     * Week3 vraag 3B:
+     * De super-aanroep wordt alleen uitgevoerd als het het eerste is wat de constructor doet.
+     */
+
+    public Docent(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht,
+                  String afkorting, String afdeling) {
         super(bsn, voornaam, achternaam, geboortedatum, geslacht);
 
         if (afkorting.length() == 4) {
