@@ -114,20 +114,20 @@ public class KantineSimulatie_2 {
 
         for(int i = 0; i < dagen; i++) {
             // bedenk hoeveel personen vandaag binnen lopen
-            //int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
-            int aantalpersonen = 100;
+            int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
 
             // laat de personen maar komen...
-            for (int j = 0; j < 100; j++) {
+            for (int j = 0; j < aantalpersonen; j++) {
                 // maak persoon en dienblad aan, koppel ze
                 Dienblad klant = null;
-                if(j<89) {
+                int n = random.nextInt(100);
+                if(n<89) {
                     klant = new Dienblad(new Student(j, "John", "Doe",
                             new Datum(1, 1, 2000), 'M', j*33, "ICT"));
-                }else if(j<99){
+                }else if(n<99){
                     klant = new Dienblad(new Docent(j, "Jan", "Jansen",
                             new Datum(10, 10, 1970), 'M', "JAJA", "ICT"));
-                }else if(j==99){
+                }else if(n==99){
                     klant = new Dienblad(new KantineMedewerker(j, "Piet", "Hein",
                             new Datum(5, 5, 1980), 'M', j*33, true));
                 }
