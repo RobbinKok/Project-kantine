@@ -82,7 +82,10 @@ public class Administratie {
         for(int i = 0; i < DAYS_IN_WEEK; i++) {
             int j = 0;
             while ( i + DAYS_IN_WEEK * j < omzet.length ) {
-                temp[i] += omzet[i + DAYS_IN_WEEK * j];
+                int index = i + DAYS_IN_WEEK * j;
+                if (index <= omzet.length) {
+                    temp[i] += omzet[index];
+                }
                 j++;
             }
         }
