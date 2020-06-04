@@ -32,7 +32,7 @@ public class Kassa {
         }
 
         if (klant.getBetaalwijze().betaal(totalePrijs)) {
-
+            System.out.println("Betaling gelukt");
             aantalVerkochteItems += aantalArtikelen;
             totaalPrijs += totalePrijs;
         } else {
