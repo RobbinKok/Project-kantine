@@ -12,6 +12,10 @@ public abstract class Betaalwijze {
     }
 
     /**
+     * Saldo is protected gemaakt, zodat alleen de klasses die het nodig hebben, de childclasses erbij kunnen
+     */
+
+    /**
      * Methode om betaling af te handelen
      *
      * @param tebetalen
