@@ -45,5 +45,9 @@ public class Dienblad {
     public void setKlant(Persoon klant) {
         this.klant = klant;
     }
+
+    public Betaalwijze getBetaalwijze() {
+        return klant.getBetaalwijze();
+    }
 }
 

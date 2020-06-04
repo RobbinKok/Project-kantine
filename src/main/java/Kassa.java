@@ -30,8 +30,14 @@ public class Kassa {
             aantalArtikelen++;
             totalePrijs += a.getPrijs();
         }
-        aantalVerkochteItems += aantalArtikelen;
-        totaalPrijs += totalePrijs;
+
+        if (klant.getBetaalwijze().betaal(totalePrijs)) {
+
+            aantalVerkochteItems += aantalArtikelen;
+            totaalPrijs += totalePrijs;
+        } else {
+            System.out.println("Onvoldoende slado");
+        }
     }
 
     /**
