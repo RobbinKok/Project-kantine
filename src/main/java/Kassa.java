@@ -31,13 +31,26 @@ public class Kassa {
             totalePrijs += a.getPrijs();
         }
 
-        if (klant.getBetaalwijze().betaal(totalePrijs)) {
-            System.out.println("Betaling gelukt");
+        //if (klant.getBetaalwijze().betaal(totalePrijs)) { geeft nullpointer
+
+            //System.out.println("Betaling gelukt");
+            if (klant instanceof KortingskaartHouder){
+                if (((KortingskaartHouder) klant).geefKortingsPercentage() == 35){
+                    totalePrijs = totaalPrijs * 0.65;
+                }
+                if (((KortingskaartHouder) klant).geefKortingsPercentage() == 25){
+                    if (totalePrijs <= 1.0){
+                        totalePrijs = totaalPrijs * 0.75;
+                    } else {
+                        totalePrijs = totaalPrijs * 1;
+                    }
+                }
+            }
             aantalVerkochteItems += aantalArtikelen;
             totaalPrijs += totalePrijs;
-        } else {
+        /*} else {
             System.out.println("Onvoldoende slado");
-        }
+        }*/
     }
 
     /**
