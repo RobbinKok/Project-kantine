@@ -1,9 +1,9 @@
 Week 4 opgave 3
 A:
 B:
-C:
-D:
-E:
+C: Nee, in java kan niet niet meerdere klassen overerven.
+D: In java kan een klasse wel meerdere interfaces gebruiken.
+E: Ja, een klasse kan tegelijk overerven van een andere klasse in een interface implementeren
 F:
 G:
 H:
