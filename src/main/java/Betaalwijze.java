@@ -12,7 +12,7 @@ public abstract class Betaalwijze {
     }
 
     /**
-     * Saldo is protected gemaakt, zodat alleen de klasses die het nodig hebben, de childclasses erbij kunnen
+     * Saldo is protected gemaakt, zodat de childclasses er direct bij kunnen
      */
 
     /**

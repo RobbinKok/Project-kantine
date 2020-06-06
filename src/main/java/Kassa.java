@@ -21,7 +21,8 @@ public class Kassa {
      *
      * @param klant die moet afrekenen
      */
-    public void rekenAf(Dienblad klant) {
+    public void rekenAf(Dienblad klant, Betaalwijze betaalwijze) {
+        klant.getKlant().setBetaalwijze(betaalwijze);
         int aantalArtikelen = 0;
         double totalePrijs = 0;
         Iterator<Artikel> it = klant.getArtikelen().iterator();
@@ -31,9 +32,9 @@ public class Kassa {
             totalePrijs += a.getPrijs();
         }
 
-        //if (klant.getBetaalwijze().betaal(totalePrijs)) { geeft nullpointer
+        if (klant.getBetaalwijze().betaal(totalePrijs)) {// geeft nullpointer
 
-            //System.out.println("Betaling gelukt");
+            System.out.println("Betaling gelukt");
             if (klant instanceof KortingskaartHouder){
                 if (((KortingskaartHouder) klant).geefKortingsPercentage() == 35){
                     totalePrijs = totaalPrijs * 0.65;
@@ -48,9 +49,9 @@ public class Kassa {
             }
             aantalVerkochteItems += aantalArtikelen;
             totaalPrijs += totalePrijs;
-        /*} else {
+        } else {
             System.out.println("Onvoldoende slado");
-        }*/
+        }
     }
 
     /**

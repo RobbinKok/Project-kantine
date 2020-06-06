@@ -34,7 +34,7 @@ public class Dienblad {
         return artikelen;
     }
 
-    public String getKlant() {return klant.toString();}
+    public Persoon getKlant() {return klant;}
 
     public String getKlantNaam() { return klant.getVoornaam() + " " + klant.getAchternaam(); }
 
