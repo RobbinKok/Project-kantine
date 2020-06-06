@@ -1,16 +1,21 @@
 Week 4 opgave 3
-A:
-B:
-C: Nee, in java kan niet niet meerdere klassen overerven.
-D: In java kan een klasse wel meerdere interfaces gebruiken.
-E: Ja, een klasse kan tegelijk overerven van een andere klasse in een interface implementeren
-F:
-G:
-H:
+A: Nee, interfaces bestaan om andere klassen uit te breiden, en hun methodes zijn bovendien niet geïmplementeerd.
+B: Nee, abstracte klassen bestaan om als superklasse voor andere klassen te dienen, en kunnen abstracte (dus niet geïmplementeerde) methodes bevatten.
+C: Nee, in Java kan een klasse niet meer dan 1 klasse overerven.
+D: Ja, in Java kan een klasse meerdere interfaces gebruiken.
+E: Ja, een klasse kan tegelijk overerven van een andere klasse en een interface implementeren.
+F: Nee, hoewel de meeste methodes in interfaces niet geïmplementeerd zijn, kunnen methodes met het sleutelwoord "default" of "static" wel een body hebben.
+G: Nee, abstracte methodes kunnen ook voorkomen in interfaces. Als de klasse andere methodes heeft die niet abstract zijn en niet de sleutelwoorden "default" 
+	of "static" gebruiken, moet het echter wel een abtracte klasse zijn.
+H: Een klasse kan tegelijkertijd meerdere vormen hebben. Een klasse Hond kan bijvoorbeeld een subklasse zijn van de abstracte klasse Dier, en objecten van 
+	deze klasse zouden gebruikt kunnen worden als een Hond-variabele gedeclareerd wordt, maar ook als een Dier-variabele gedeclareerd wordt. Daarnaast zou een 
+	object van de klasse Vleermuis, die de interface KanVliegen implementeert, zowel gebruikt kunnen worden als er om een variabele van het type Vleermuis of
+	KanVliegen wordt gevraagd.
 
 Week 4 opgave 4:
-A:
-B:
-C:
-D:
-E:
+A: Ja, dat een klasse abstract is betekent dat er geen objecten van die klasse kunnen worden gemaakt, en dat de klasse abstracte methodes *kan* bevatten.
+B: Nee, een subklasse van een abstracte klasse moet alleen alle abstracte methodes van de superklasse implementeren als het zelf geen abstracte klasse is.
+C: Door de klasse abstract te maken voorkom je de compilerfout. Dit is een logische oplossing omdat abstracte klassen niet-geïmplementeerde methodes kunnen hebben.
+D: Een intantievariabele hoort bij een instantie van een klasse, terwijl er geen instantie kan zijn van iets dat abstract is.
+E: Een methode met het "final" sleutelwoord kan niet ge-override worden door subklassen. Abstracte methodes moeten worden ge-override door subklassen, dus het zou 
+	een tegenstelling zijn als een methode zowel "abstract" als "final" was.
