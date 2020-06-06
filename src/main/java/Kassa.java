@@ -32,9 +32,8 @@ public class Kassa {
             totalePrijs += a.getPrijs();
         }
 
-        if (klant.getBetaalwijze().betaal(totalePrijs)) {// geeft nullpointer
-
-            System.out.println("Betaling gelukt");
+        try{
+            klant.getBetaalwijze().betaal(totalePrijs);
             if (klant instanceof KortingskaartHouder){
                 double korting = 0;
                 if(((KortingskaartHouder)klant).heeftMaximum()){
@@ -50,8 +49,8 @@ public class Kassa {
             }
             aantalVerkochteItems += aantalArtikelen;
             totaalPrijs += totalePrijs;
-        } else {
-            System.out.println("Onvoldoende slado");
+        } catch(TeWeinigGeldException e) {
+            System.out.println(klant.getKlantNaam() + " heeft onvoldoende saldo voor deze transactie.");
         }
     }
 
