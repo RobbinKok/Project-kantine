@@ -35,17 +35,13 @@ public class Kassa {
         try{
             klant.getBetaalwijze().betaal(totalePrijs);
             if (klant instanceof KortingskaartHouder){
-                double korting = 0;
+                double korting = totalePrijs * (((KortingskaartHouder)klant).geefKortingsPercentage()/100);
                 if(((KortingskaartHouder)klant).heeftMaximum()){
-                    korting = totalePrijs * (((KortingskaartHouder)klant).geefKortingsPercentage()/100);
                     if(korting > ((KortingskaartHouder)klant).geefMaximum()){
                         korting = ((KortingskaartHouder)klant).geefMaximum();
                     }
-                    totalePrijs = totalePrijs - korting;
-                }else{
-                    korting = totalePrijs * (((KortingskaartHouder)klant).geefKortingsPercentage()/100);
-                    totalePrijs = totalePrijs - korting;
                 }
+                totalePrijs = totalePrijs - korting;
             }
             aantalVerkochteItems += aantalArtikelen;
             totaalPrijs += totalePrijs;
