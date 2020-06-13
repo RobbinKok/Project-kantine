@@ -2,20 +2,22 @@ Opgave 1:
 A: gedaan
 B: gedaan
 C: Gedaan
-D: Column geeft aan dat de naam van een column van een tabel volgt, GeneratedValue zorgt ervoor dat een waarde automatisch gegenereerd wordt,
-   en ID zorgt ervoor dat een field een primary key is
-E: Studen, student_telefoon, sudtie en telefoon zijn er aangemaakt
+D: Column geeft aan dat de naam van een column van een tabel volgt, GeneratedValue zorgt ervoor dat een waarde
+   automatisch gegenereerd wordt, en ID zorgt ervoor dat een field een primary key is.
+E: Studen, student_telefoon, sudtie en telefoon zijn aangemaakt.
 
 Opgave 2:
-A: Dit komt omdat een student meerdere telefoons kan hebben.
-B: * Een studieinschrijving heeft een directe verbinding met een studen, terwijl een telefoon verbonden zit aan een
-     telefoonnummer die vast zit aan een studenten id
-   *
+A: Dit komt omdat één (one) student meerdere (many) telefoons kan hebben.
+B: * Een studieinschrijving heeft een directe verbinding met een student, terwijl een telefoon verbonden zit aan een
+     telefoonnummer die vast zit aan een studenten-id. Hierdoor is er een join nodig om de verbinding tussen telefoon
+     en student te maken.
+   * Een nadeel van het niet gebruiken van een join-table tussen Student en StudieInschrijving is dat de tabel studies
+     dubbele informatie bevat als meerdere studenten dezelfde studie volgen.
 C: Er kunnen verschillende studies gekoppeld zijn aan 1 student, dit valt in de database te zien doordat student_id 11
    ingeschreven staat bij de studie_name HBO_ICT en GGD.
-D: * Studentenkaart kan je terugvinden in de tabel Student in de datatbase
-   * Door @Embeddable te gebruiken in kaart zeg je als het ware dat je de klasse kan inzetten ergens anders
-     Door @Embedded te gebruiken zet je Studentenkaart in om gebruikt te worden in Student
+D: * Studentenkaart kan je terugvinden in de kolom kaartnummer in de tabel student.
+   * Door @Embeddable te gebruiken kun je aangeven dat een klasse ergens anders bij hoort. @Embedded geeft aan dat wat
+     volgt een @Embeddable klasse is.
 
 Opgave 3:
 A: Bij het doen van een betaling, omdat het geen nut heeft om iets te doen met een database als de betaling mislukt
