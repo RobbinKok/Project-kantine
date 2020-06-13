@@ -2,15 +2,22 @@ public class Artikel {
 
     private String naam;
     private double prijs;
+    private double korting;
+
+    public Artikel(String naam, double prijs, double korting){
+        this.naam = naam;
+        this.prijs = prijs;
+        this.korting = korting;
+    }
 
     public Artikel(String naam, double prijs) {
-        setNaam(naam);
-        setPrijs(prijs);
+        this(naam, prijs, 0);
     }
 
     public Artikel() {
         setNaam(null);
-        setPrijs(0);
+        prijs = 0;
+        korting = 0;
     }
 
     public String getNaam() {
@@ -26,6 +33,14 @@ public class Artikel {
 
     public void setPrijs(double prijs) {
         this.prijs = prijs;
+    }
+
+    public double getKorting() {
+        return korting;
+    }
+
+    public void setKorting(double korting) {
+        this.korting = korting;
     }
 
     @Override

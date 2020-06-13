@@ -25,24 +25,34 @@ public class Kassa {
         klant.getKlant().setBetaalwijze(betaalwijze);
         int aantalArtikelen = 0;
         double totalePrijs = 0;
+        double korting = 0;
+
         Iterator<Artikel> it = klant.getArtikelen().iterator();
         while(it.hasNext()){
             Artikel a = it.next();
             aantalArtikelen++;
-            totalePrijs += a.getPrijs();
+
+            if(a.getKorting()==0){
+                totalePrijs += a.getPrijs();
+                if(klant instanceof KortingskaartHouder){
+                    korting += a.getPrijs() * (((KortingskaartHouder)klant).geefKortingsPercentage()/100);
+                }
+            }else{
+                totalePrijs += a.getPrijs() - a.getKorting();
+            }
         }
 
+        if (klant instanceof KortingskaartHouder){
+            if(((KortingskaartHouder)klant).heeftMaximum()){
+                if(korting > ((KortingskaartHouder)klant).geefMaximum()){
+                    korting = ((KortingskaartHouder)klant).geefMaximum();
+                }
+            }
+        }
+
+        totalePrijs = totalePrijs - korting;
         try{
             klant.getBetaalwijze().betaal(totalePrijs);
-            if (klant instanceof KortingskaartHouder){
-                double korting = totalePrijs * (((KortingskaartHouder)klant).geefKortingsPercentage()/100);
-                if(((KortingskaartHouder)klant).heeftMaximum()){
-                    if(korting > ((KortingskaartHouder)klant).geefMaximum()){
-                        korting = ((KortingskaartHouder)klant).geefMaximum();
-                    }
-                }
-                totalePrijs = totalePrijs - korting;
-            }
             aantalVerkochteItems += aantalArtikelen;
             totaalPrijs += totalePrijs;
         } catch(TeWeinigGeldException e) {

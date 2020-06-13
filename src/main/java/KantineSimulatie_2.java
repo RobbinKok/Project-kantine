@@ -52,7 +52,11 @@ public class KantineSimulatie_2 {
         random = new Random();
         int[] hoeveelheden =
                 getRandomArray(AANTAL_ARTIKELEN, MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
+
         kantineaanbod = new KantineAanbod(artikelnamen, artikelprijzen, hoeveelheden);
+        int index = random.nextInt(artikelnamen.length);
+        Artikel artikelmetkorting = kantineaanbod.getArtikel(artikelnamen[index]);
+        artikelmetkorting.setKorting(artikelmetkorting.getPrijs() * 0.2);
 
         kantine.setKantineAanbod(kantineaanbod);
     }
