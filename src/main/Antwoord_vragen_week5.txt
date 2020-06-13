@@ -1,6 +1,15 @@
+Opgave 1:
+A: gedaan
+B: gedaan
+C: Gedaan
+D:
+E: Studen, student_telefoon, sudtie en telefoon zijn er aangemaakt
+
 Opgave 2:
 A: Dit komt omdat een student meerdere telefoons kan hebben.
-B:
+B: * Een studieinschrijving heeft een directe verbinding met een studen, terwijl een telefoon verbonden zit aan een
+     telefoonnummer die vast zit aan een studenten id
+   *
 C: Er kunnen verschillende studies gekoppeld zijn aan 1 student, dit valt in de database te zien doordat student_id 11
    ingeschreven staat bij de studie_name HBO_ICT en GGD.
 D: * Studentenkaart kan je terugvinden in de tabel Student in de datatbase
