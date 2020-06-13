@@ -1,6 +1,12 @@
 import java.util.*;
+import javax.persistence.Persistence;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 public class KantineSimulatie_2 {
+    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY =
+            Persistence.createEntityManagerFactory("KantineSimulatie");
+    private EntityManager manager;
 
     // kantine
     private Kantine kantine;
@@ -108,6 +114,9 @@ public class KantineSimulatie_2 {
      * @param dagen
      */
     public void simuleer(int dagen) {
+        //create an EntityManager
+        manager = ENTITY_MANAGER_FACTORY.createEntityManager();
+
         // for lus voor dagen
         int[] aantalGekochteArtikelen = new int[dagen];
         double[] omzet = new double[dagen];
@@ -176,6 +185,9 @@ public class KantineSimulatie_2 {
                 ". \nDe omzet op woensdagen was €" + dagomzet[2] + ". \nDe omzet op donderdagen was € " + dagomzet[3] +
                 ". \nDe omzet op vrijdagen was € " + dagomzet[4] + ". \nDe omzet op zaterdagen was € " + dagomzet[5] +
                 ". \nDe omzet op zondagen was € " + dagomzet[6] + ".");
+
+        manager.close();
+        ENTITY_MANAGER_FACTORY.close();
     }
 
     /**
