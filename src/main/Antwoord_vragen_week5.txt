@@ -2,8 +2,8 @@ Opgave 1:
 A: gedaan
 B: gedaan
 C: Gedaan
-D: Column is de naam van de colum, GeneratedValue zorgt ervoor dat de ID een uniek nummer is en ID zorgt ervoor dat een
-   field een primary key is
+D: Column geeft aan dat de naam van een column van een tabel volgt, GeneratedValue zorgt ervoor dat een waarde automatisch gegenereerd wordt,
+   en ID zorgt ervoor dat een field een primary key is
 E: Studen, student_telefoon, sudtie en telefoon zijn er aangemaakt
 
 Opgave 2:
