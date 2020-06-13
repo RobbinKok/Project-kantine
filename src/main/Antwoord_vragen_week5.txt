@@ -20,4 +20,4 @@ D: * Studentenkaart kan je terugvinden in de kolom kaartnummer in de tabel stude
      volgt een @Embeddable klasse is.
 
 Opgave 3:
-A: Bij het doen van een betaling, omdat het geen nut heeft om iets te doen met een database als de betaling mislukt
+A: Bij het doen van een betaling, omdat het geen nut heeft om iets te doen met een database als de betaling mislukt.
