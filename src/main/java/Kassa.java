@@ -27,6 +27,7 @@ public class Kassa {
         double totalePrijs = 0;
         double korting = 0;
 
+/*
         Iterator<Artikel> it = klant.getArtikelen().iterator();
         while(it.hasNext()){
             Artikel a = it.next();
@@ -49,6 +50,7 @@ public class Kassa {
                 }
             }
         }
+*/
 
         totalePrijs = totalePrijs - korting;
         try{

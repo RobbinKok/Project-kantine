@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Iterator;
 
 public class Factuur implements Serializable {
 
@@ -31,6 +32,36 @@ public class Factuur implements Serializable {
      */
     private void verwerkBestelling(Dienblad klant) {
         // method body omitted
+        int aantalArtikelen = 0;
+        double totalePrijs = 0;
+
+        Iterator<Artikel> it = klant.getArtikelen().iterator();
+        while (it.hasNext()){
+
+            Artikel a = it.next();
+            aantalArtikelen++;
+
+            if (a.getKorting()==0){
+                totalePrijs += a.getPrijs();
+                if (klant instanceof KortingskaartHouder){
+                    korting += a.getPrijs() * (((KortingskaartHouder)klant).geefKortingsPercentage()/100);
+                }else {
+                    totalePrijs += a.getPrijs() - a.getKorting();
+                }
+            }
+
+            if (klant instanceof KortingskaartHouder){
+                if (((KortingskaartHouder)klant).heeftMaximum()){
+                    if (korting > ((KortingskaartHouder)klant).geefMaximum()){
+                        korting = ((KortingskaartHouder)klant).geefMaximum();
+                    }
+                }
+            }
+
+            totalePrijs = totalePrijs - korting;
+
+
+        }
     }
 
     /*
@@ -52,5 +83,6 @@ public class Factuur implements Serializable {
      */
     public String toString() {
         // method body omitted
+        return null;
     }
 }
