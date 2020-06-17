@@ -1,3 +1,4 @@
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -14,9 +15,10 @@ public class Kantine {
     /**
      * Constructor
      */
-    public Kantine() {
+    public Kantine(EntityManager manager) {
         kassarij = new KassaRij();
         kassa = new Kassa(kassarij);
+        this.manager = manager;
     }
 
     public Kassa getKassa() {

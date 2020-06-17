@@ -18,8 +18,9 @@ public class Kassa {
     /**
      * Constructor
      */
-    public Kassa(KassaRij kassaRij) {
+    public Kassa(KassaRij kassaRij, EntityManager manager) {
         this.kassaRij = kassaRij;
+        this.manager = manager;
     }
 
     /**
