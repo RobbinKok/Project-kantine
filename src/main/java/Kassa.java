@@ -1,11 +1,18 @@
 import java.time.LocalDate;
 import java.util.Iterator;
+import javax.persistence.Persistence;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 public class Kassa {
 
     private KassaRij kassaRij;
     private int aantalVerkochteItems = 0;
     private double totaalPrijs = 0;
+    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY =
+            Persistence.createEntityManagerFactory("KantineSimulatie");
+    private EntityManager manager;
+
 
 
     /**

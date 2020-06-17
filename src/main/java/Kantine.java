@@ -1,8 +1,15 @@
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 public class Kantine {
 
     private Kassa kassa;
     private KassaRij kassarij;
     private KantineAanbod kantineAanbod;
+    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY =
+            Persistence.createEntityManagerFactory("KantineSimulatie");
+    private EntityManager manager;
 
     /**
      * Constructor
