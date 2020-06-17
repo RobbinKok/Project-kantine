@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.Iterator;
 
 public class Kassa {
@@ -54,6 +55,10 @@ public class Kassa {
 
         totalePrijs = totalePrijs - korting;
         try{
+            Factuur factuur = new Factuur(klant, LocalDate.now());
+            factuur.setKorting(korting);
+            factuur.setTotaal(totalePrijs);
+            
             klant.getBetaalwijze().betaal(totalePrijs);
             aantalVerkochteItems += aantalArtikelen;
             totaalPrijs += totalePrijs;

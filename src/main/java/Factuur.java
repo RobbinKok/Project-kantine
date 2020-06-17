@@ -1,15 +1,25 @@
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Iterator;
 
+@Entity
+@Table(name = "Factuur")
 public class Factuur implements Serializable {
-
+    @Id
+    @Column(name = "Id", unique = true)
     private Long id;
 
+    @Column(name = "Transaction_date", nullable = false)
     private LocalDate datum;
 
+    @Column(name = "Koring", nullable = false)
     private double korting;
 
+    @Column(name = "Totaalpreis", nullable = false)
     private double totaal;
 
     public Factuur() {
@@ -64,6 +74,15 @@ public class Factuur implements Serializable {
         }
     }
 
+
+    public void setKorting(double korting) {
+        this.korting = korting;
+    }
+
+    public void setTotaal(double totaal) {
+        this.totaal = totaal;
+    }
+
     /*
      * @return het totaalbedrag
      */
@@ -83,6 +102,6 @@ public class Factuur implements Serializable {
      */
     public String toString() {
         // method body omitted
-        return null;
+        return "Betelangs nummer: " + id +  " Datum: " + datum + " Koring: " + korting + " Totaal: " + totaal ;
     }
 }
