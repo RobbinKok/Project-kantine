@@ -1,7 +1,4 @@
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Iterator;
@@ -10,7 +7,7 @@ import java.util.Iterator;
 @Table(name = "Factuur")
 public class Factuur implements Serializable {
     @Id
-    @Column(name = "Id", unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "Transaction_date", nullable = false)
