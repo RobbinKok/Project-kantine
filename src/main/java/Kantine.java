@@ -16,9 +16,9 @@ public class Kantine {
      * Constructor
      */
     public Kantine(EntityManager manager) {
-        kassarij = new KassaRij();
-        kassa = new Kassa(kassarij);
         this.manager = manager;
+        kassarij = new KassaRij();
+        kassa = new Kassa(kassarij, manager);
     }
 
     public Kassa getKassa() {
