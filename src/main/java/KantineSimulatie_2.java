@@ -54,9 +54,10 @@ public class KantineSimulatie_2 {
                 getRandomArray(AANTAL_ARTIKELEN, MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
 
         kantineaanbod = new KantineAanbod(artikelnamen, artikelprijzen, hoeveelheden);
-        int index = random.nextInt(artikelnamen.length);
+/*        int index = random.nextInt(artikelnamen.length);
         Artikel artikelmetkorting = kantineaanbod.getArtikel(artikelnamen[index]);
-        artikelmetkorting.setKorting(artikelmetkorting.getPrijs() * 0.2);
+        artikelmetkorting.setKorting(artikelmetkorting.getPrijs() * 0.2);*/
+
 
         kantine.setKantineAanbod(kantineaanbod);
     }
@@ -126,6 +127,8 @@ public class KantineSimulatie_2 {
         double[] omzet = new double[dagen];
 
         for(int i = 0; i < dagen; i++) {
+            String artikelVanDeDag = artikelnamen[random.nextInt(artikelnamen.length)];
+            kantineaanbod.setKorting(artikelVanDeDag, 0.2);
             // bedenk hoeveel personen vandaag binnen lopen
             int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
 
@@ -135,14 +138,28 @@ public class KantineSimulatie_2 {
                 Dienblad klant = null;
                 int n = random.nextInt(100);
                 if(n<89) {
-                    klant = new Dienblad(new Student(j, "John", "Doe",
-                            new Datum(1, 1, 2000), 'M', j*33, "ICT"));
+                    Pinpas pinpas = new Pinpas();
+                    pinpas.setSaldo(500);
+                    Persoon p = new Student(j, "John", "Doe",
+                            new Datum(1, 1, 2000), 'M', j*33, "ICT");
+                    p.setBetaalwijze(pinpas);
+                    klant = new Dienblad(p);
+
                 }else if(n<99){
-                    klant = new Dienblad(new Docent(j, "Jan", "Jansen",
-                            new Datum(10, 10, 1970), 'M', "JAJA", "ICT"));
+                    Pinpas pinpas = new Pinpas();
+                    pinpas.setSaldo(1000);
+                    Persoon p = new Docent(j, "Jan", "Jansen",
+                            new Datum(10, 10, 1970), 'M', "JAJA", "ICT");
+                    p.setBetaalwijze(pinpas);
+                    klant = new Dienblad(p);
+
                 }else if(n==99){
-                    klant = new Dienblad(new KantineMedewerker(j, "Piet", "Hein",
-                            new Datum(5, 5, 1980), 'M', j*33, true));
+                    Pinpas pinpas = new Pinpas();
+                    pinpas.setSaldo(1000);
+                    Persoon p = new KantineMedewerker(j, "Piet", "Hein",
+                            new Datum(5, 5, 1980), 'M', j*33, true);
+                    p.setBetaalwijze(pinpas);
+                    klant = new Dienblad(p);
                 }
 
                 // en bedenk hoeveel artikelen worden gepakt

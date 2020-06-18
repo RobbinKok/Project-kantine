@@ -1,6 +1,6 @@
 public class Pinpas extends Betaalwijze {
 
-    private double kredietlimiet;
+    private double kredietlimiet = 1000;
 
     /**
      * Methode om kredietlimiet te zetten

@@ -21,8 +21,8 @@ public class Kassa {
      *
      * @param klant die moet afrekenen
      */
-    public void rekenAf(Dienblad klant, Betaalwijze betaalwijze) {
-        klant.getKlant().setBetaalwijze(betaalwijze);
+    public void rekenAf(Dienblad klant) {
+        //klant.getKlant().setBetaalwijze(betaalwijze);
         int aantalArtikelen = 0;
         double totalePrijs = 0;
         double korting = 0;
