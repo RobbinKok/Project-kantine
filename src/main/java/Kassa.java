@@ -31,6 +31,8 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant, Betaalwijze betaalwijze) {
+        manager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        manager.getTransaction().begin();
         klant.getKlant().setBetaalwijze(betaalwijze);
         int aantalArtikelen = 0;
         double totalePrijs = 0;
@@ -70,8 +72,18 @@ public class Kassa {
             klant.getBetaalwijze().betaal(totalePrijs);
             aantalVerkochteItems += aantalArtikelen;
             totaalPrijs += totalePrijs;
+
+            manager.persist(factuur);
+            manager.getTransaction().commit();
+
+            manager.close();
+            ENTITY_MANAGER_FACTORY.close();
         } catch(TeWeinigGeldException e) {
             System.out.println(klant.getKlantNaam() + " heeft onvoldoende saldo voor deze transactie.");
+
+            manager.getTransaction().rollback();
+            manager.close();
+            ENTITY_MANAGER_FACTORY.close();
         }
     }
 
