@@ -5,6 +5,7 @@ public class KantineAanbod {
     private HashMap<String, ArrayList<Artikel>> aanbod;
     private HashMap<String, Integer> startVoorraad;
     private HashMap<String, Double> prijzen;
+    private String artikelKorting;
 
     /**
      * 2.5b:
@@ -34,13 +35,29 @@ public class KantineAanbod {
         }
     }
 
+    public void setKorting(String naam, double korting){
+        ArrayList<Artikel> artikelen = aanbod.get(naam);
+
+        for (int i = 0; i < artikelen.size(); i++){
+            artikelen.get(i).setKorting(artikelen.get(i).getPrijs() * korting);
+        }
+
+        this.artikelKorting = naam;
+
+    }
+
+
     private void vulVoorraadAan(String productnaam) {
         ArrayList<Artikel> huidigeVoorraad = aanbod.get(productnaam);
         int startHoeveelheid = startVoorraad.get(productnaam);
         int huidigeHoeveelheid = huidigeVoorraad.size();
         double prijs = prijzen.get(productnaam);
         for (int j = huidigeHoeveelheid; j < startHoeveelheid; j++) {
-            huidigeVoorraad.add(new Artikel(productnaam, prijs));
+            if (productnaam.equals(artikelKorting)){
+                huidigeVoorraad.add(new Artikel(productnaam, prijs, prijs * 0.2));
+            } else {
+                huidigeVoorraad.add(new Artikel(productnaam,prijs));
+            }
         }
         aanbod.put(productnaam, huidigeVoorraad);
     }

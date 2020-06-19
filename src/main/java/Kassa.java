@@ -30,10 +30,10 @@ public class Kassa {
      *
      * @param klant die moet afrekenen
      */
-    public void rekenAf(Dienblad klant, Betaalwijze betaalwijze) {
+    public void rekenAf(Dienblad klant) {
         manager = ENTITY_MANAGER_FACTORY.createEntityManager();
         manager.getTransaction().begin();
-        klant.getKlant().setBetaalwijze(betaalwijze);
+        //klant.getKlant().setBetaalwijze(betaalwijze);
         int aantalArtikelen = 0;
         double totalePrijs = 0;
         double korting = 0;
