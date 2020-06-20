@@ -15,10 +15,10 @@ public class Kantine {
     /**
      * Constructor
      */
-    public Kantine(EntityManager manager) {
-        this.manager = manager;
+    public Kantine(EntityManager entityManager) {
+        this.manager = entityManager;
         kassarij = new KassaRij();
-        kassa = new Kassa(kassarij, manager);
+        kassa = new Kassa(kassarij, entityManager);
     }
 
     public Kassa getKassa() {

@@ -3,6 +3,7 @@ import java.util.Iterator;
 import javax.persistence.Persistence;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.SynchronizationType;
 
 public class Kassa {
 
@@ -76,15 +77,17 @@ public class Kassa {
             manager.persist(factuur);
             manager.getTransaction().commit();
 
-            manager.close();
-            ENTITY_MANAGER_FACTORY.close();
+/*            manager.close();
+            ENTITY_MANAGER_FACTORY.close();*/
         } catch(TeWeinigGeldException e) {
             System.out.println(klant.getKlantNaam() + " heeft onvoldoende saldo voor deze transactie.");
 
             manager.getTransaction().rollback();
-            manager.close();
-            ENTITY_MANAGER_FACTORY.close();
+/*            manager.close();
+            ENTITY_MANAGER_FACTORY.close();*/
         }
+        /*manager.close();
+        ENTITY_MANAGER_FACTORY.close();*/
     }
 
     /**
