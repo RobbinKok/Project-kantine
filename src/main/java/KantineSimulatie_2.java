@@ -205,11 +205,21 @@ public class KantineSimulatie_2 {
             //Query van 3b:
             System.out.println("");
             System.out.println("De query van 3b:");
-            Query query3b = manager.createNativeQuery("SELECT  sum(Totaalprijs), SUM(Korting), avg(Totaalprijs), avg(Korting) from Factuur");
+            Query query3b = manager.createNativeQuery("SELECT avg(Totaalprijs), sum(Korting) from Factuur group by Totaalprijs");
             List<Object[]> result3b = query3b.getResultList();
-            for (i = 0; i < result3a.size(); i++){
-                System.out.println(Arrays.toString(result3a.get(i)));
+            result3b.forEach(r -> System.out.println(Arrays.toString(r)));
+
+
+            //Query van 3C:
+            System.out.println("");
+            System.out.println("De query van 3c:");
+            Query query3c = manager.createNativeQuery("SELECT  Totaalprijs, Korting from Factuur order by totaalprijs DESC limit 3");
+            List<Object[]> result3c = query3c.getResultList();
+            for (int j = 0; j < result3c.size(); j++){
+                System.out.println(Arrays.toString(result3c.get(j)));
             }
+            System.out.println();
+
 
             // reset de kassa voor de volgende dag
             kantine.getKassa().resetKassa();
