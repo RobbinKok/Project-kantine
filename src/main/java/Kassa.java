@@ -36,8 +36,8 @@ public class Kassa {
         manager.getTransaction().begin();
         //klant.getKlant().setBetaalwijze(betaalwijze);
         int aantalArtikelen = 0;
-        double totalePrijs = 0;
-        double korting = 0;
+        /*double totalePrijs = 0;
+        double korting = 0;*/
 
 /*
         Iterator<Artikel> it = klant.getArtikelen().iterator();
@@ -64,9 +64,12 @@ public class Kassa {
         }
 */
 
-        totalePrijs = totalePrijs - korting;
+        //totalePrijs = totalePrijs - korting;
         try{
             Factuur factuur = new Factuur(klant, LocalDate.now());
+            double korting = factuur.getKorting();
+            double totalePrijs = factuur.getTotaal();
+
             factuur.setKorting(korting);
             factuur.setTotaal(totalePrijs);
             

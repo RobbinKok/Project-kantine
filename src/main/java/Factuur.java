@@ -13,7 +13,7 @@ public class Factuur implements Serializable {
     @Column(name = "Transaction_date", nullable = false)
     private LocalDate datum;
 
-    @Column(name = "Koring", nullable = false)
+    @Column(name = "Korting", nullable = false)
     private double korting;
 
     @Column(name = "Totaalprijs", nullable = false)
@@ -27,6 +27,8 @@ public class Factuur implements Serializable {
     public Factuur(Dienblad klant, LocalDate datum){
         this();
         this.datum = datum;
+
+        verwerkBestelling(klant);
     }
 
     /**
@@ -40,7 +42,7 @@ public class Factuur implements Serializable {
     private void verwerkBestelling(Dienblad klant) {
         // method body omitted
         int aantalArtikelen = 0;
-        double totalePrijs = 0;
+        //double totalePrijs = 0;
 
         Iterator<Artikel> it = klant.getArtikelen().iterator();
         while (it.hasNext()){
@@ -49,12 +51,12 @@ public class Factuur implements Serializable {
             aantalArtikelen++;
 
             if (a.getKorting()==0){
-                totalePrijs += a.getPrijs();
+                totaal += a.getPrijs();
                 if (klant instanceof KortingskaartHouder){
                     korting += a.getPrijs() * (((KortingskaartHouder)klant).geefKortingsPercentage()/100);
-                }else {
-                    totalePrijs += a.getPrijs() - a.getKorting();
                 }
+            } else {
+                totaal += a.getPrijs() - a.getKorting();
             }
 
             if (klant instanceof KortingskaartHouder){
@@ -65,7 +67,9 @@ public class Factuur implements Serializable {
                 }
             }
 
-            totalePrijs = totalePrijs - korting;
+            totaal = totaal - korting;
+
+
 
 
         }
