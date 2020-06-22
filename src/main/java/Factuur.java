@@ -16,7 +16,7 @@ public class Factuur implements Serializable {
     @Column(name = "Koring", nullable = false)
     private double korting;
 
-    @Column(name = "Totaalpreis", nullable = false)
+    @Column(name = "Totaalprijs", nullable = false)
     private double totaal;
 
     public Factuur() {

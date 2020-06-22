@@ -2,6 +2,7 @@ import java.util.*;
 import javax.persistence.Persistence;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 public class KantineSimulatie_2 {
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY =
@@ -190,6 +191,25 @@ public class KantineSimulatie_2 {
 
             aantalGekochteArtikelen[i] = kantine.getKassa().aantalArtikelen();
             omzet[i] = kantine.getKassa().hoeveelheidGeldInKassa();
+
+            //Query van 3a:
+            System.out.println("De query van 3a:");
+            String queryV3aa = "SELECT Koring, Totaalprijs from Factuur";
+            Query query3a = manager.createNativeQuery(queryV3aa);
+            List<Object[]> result3a = query3a.getResultList();
+            for (i = 0; i < result3a.size(); i++){
+                System.out.println(Arrays.toString(result3a.get(i)));
+            }
+
+
+            //Query van 3b:
+            System.out.println("");
+            System.out.println("De query van 3b:");
+            Query query3b = manager.createNativeQuery("SELECT SUM(Koring), sum(Totaalprijs), avg(Koring), avg(Totaalprijs)from Factuur");
+            List<Object[]> result3b = query3b.getResultList();
+            for (i = 0; i < result3a.size(); i++){
+                System.out.println(Arrays.toString(result3a.get(i)));
+            }
 
             // reset de kassa voor de volgende dag
             kantine.getKassa().resetKassa();
