@@ -69,12 +69,9 @@ public class Kassa {
             Factuur factuur = new Factuur(klant, LocalDate.now());
             double korting = factuur.getKorting();
             double totalePrijs = factuur.getTotaal();
-
-            factuur.setKorting(korting);
-            factuur.setTotaal(totalePrijs);
             
             klant.getBetaalwijze().betaal(totalePrijs);
-            aantalVerkochteItems += aantalArtikelen;
+            aantalVerkochteItems += klant.getArtikelen().size();
             totaalPrijs += totalePrijs;
 
             manager.persist(factuur);

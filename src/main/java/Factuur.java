@@ -40,13 +40,10 @@ public class Factuur implements Serializable {
      * @param klant
      */
     private void verwerkBestelling(Dienblad klant) {
-        // method body omitted
         int aantalArtikelen = 0;
-        //double totalePrijs = 0;
 
         Iterator<Artikel> it = klant.getArtikelen().iterator();
         while (it.hasNext()){
-
             Artikel a = it.next();
             aantalArtikelen++;
 
@@ -66,12 +63,7 @@ public class Factuur implements Serializable {
                     }
                 }
             }
-
             totaal = totaal - korting;
-
-
-
-
         }
     }
 
@@ -84,7 +76,7 @@ public class Factuur implements Serializable {
         this.totaal = totaal;
     }
 
-    /*
+    /**
      * @return het totaalbedrag
      */
     public double getTotaal() {
@@ -102,7 +94,6 @@ public class Factuur implements Serializable {
      * @return een printbaar bonnetje
      */
     public String toString() {
-        // method body omitted
-        return "Betelangs nummer: " + id +  " Datum: " + datum + " Koring: " + korting + " Totaal: " + totaal ;
+        return "Betalingsnummer: " + id +  "\nDatum: " + datum + "\nKorting: " + korting + "\nTotaalbedrag: " + totaal ;
     }
 }
