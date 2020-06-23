@@ -56,7 +56,7 @@ public class KantineSimulatie_2 {
                 getRandomArray(AANTAL_ARTIKELEN, MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
 
         kantineaanbod = new KantineAanbod(artikelnamen, artikelprijzen, hoeveelheden);
-/*        int index = random.nextInt(artikelnamen.length);
+        /*int index = random.nextInt(artikelnamen.length);
         Artikel artikelmetkorting = kantineaanbod.getArtikel(artikelnamen[index]);
         artikelmetkorting.setKorting(artikelmetkorting.getPrijs() * 0.2);*/
 
@@ -129,7 +129,8 @@ public class KantineSimulatie_2 {
 
         for(int i = 0; i < dagen; i++) {
             String artikelVanDeDag = artikelnamen[random.nextInt(artikelnamen.length)];
-            kantineaanbod.setKorting(artikelVanDeDag, 0.2);
+            kantine.getKassa().setArtikelVanDeDag(artikelVanDeDag);
+
             // bedenk hoeveel personen vandaag binnen lopen
             int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
 

@@ -11,7 +11,7 @@ public class Kassa {
     private int aantalVerkochteItems = 0;
     private double totaalPrijs = 0;
     private EntityManager manager;
-
+    private String artikelVanDeDag;
 
 
     /**
@@ -63,10 +63,10 @@ public class Kassa {
 
         //totalePrijs = totalePrijs - korting;
         try{
-            Factuur factuur = new Factuur(klant, LocalDate.now());
+            Factuur factuur = new Factuur(klant, LocalDate.now(), artikelVanDeDag);
             double korting = factuur.getKorting();
             double totalePrijs = factuur.getTotaal();
-            
+
             klant.getBetaalwijze().betaal(totalePrijs);
             aantalVerkochteItems += klant.getArtikelen().size();
             totaalPrijs += totalePrijs;
@@ -85,6 +85,10 @@ public class Kassa {
         }
         /*manager.close();
         ENTITY_MANAGER_FACTORY.close();*/
+    }
+
+    public void setArtikelVanDeDag(String artikelVanDeDag) {
+        this.artikelVanDeDag = artikelVanDeDag;
     }
 
     /**

@@ -19,14 +19,17 @@ public class Factuur implements Serializable {
     @Column(name = "Totaalprijs", nullable = false)
     private double totaal;
 
+    private String artikelVanDeDag;
+
     public Factuur() {
         totaal = 0;
         korting = 0;
     }
 
-    public Factuur(Dienblad klant, LocalDate datum){
+    public Factuur(Dienblad klant, LocalDate datum, String artikelVanDeDag){
         this();
         this.datum = datum;
+        this.artikelVanDeDag = artikelVanDeDag;
 
         verwerkBestelling(klant);
     }
@@ -46,14 +49,17 @@ public class Factuur implements Serializable {
         while (it.hasNext()){
             Artikel a = it.next();
             aantalArtikelen++;
+            if(a.getNaam().equals(artikelVanDeDag)){
+                a.setKorting(a.getPrijs() * 0.2);
+            }
 
+            totaal += a.getPrijs();
             if (a.getKorting()==0){
-                totaal += a.getPrijs();
                 if (klant instanceof KortingskaartHouder){
                     korting += a.getPrijs() * (((KortingskaartHouder)klant).geefKortingsPercentage()/100);
                 }
             } else {
-                totaal += a.getPrijs() - a.getKorting();
+                korting += a.getKorting();
             }
 
             if (klant instanceof KortingskaartHouder){
