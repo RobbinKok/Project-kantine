@@ -210,7 +210,7 @@ public class KantineSimulatie_2 {
 
 
         //Query van 3b:
-        System.out.println("");
+        System.out.println();
         System.out.println("De query van 3b:");
         Query query3b = manager.createNativeQuery("SELECT avg(Totaalprijs), avg(Korting) from Factuur");
         List<Object[]> result3b = query3b.getResultList();
@@ -218,7 +218,7 @@ public class KantineSimulatie_2 {
 
 
         //Query van 3C:
-        System.out.println("");
+        System.out.println();
         System.out.println("De query van 3c:");
         Query query3c = manager.createNativeQuery("SELECT  Totaalprijs, Korting from Factuur order by totaalprijs DESC limit 3");
         List<Object[]> result3c = query3c.getResultList();
@@ -228,11 +228,46 @@ public class KantineSimulatie_2 {
         System.out.println();
 
         //Query van 6.5a:
-        System.out.println("");
+        System.out.println();
         System.out.println("De query van 6.5a:");
         Query query5a = manager.createNativeQuery("SELECT naam, sum(prijs), sum(korting) FROM FactuurRegel GROUP BY naam");
         List<Object[]> result5a = query5a.getResultList();
         for (Object[] objects : result5a) {
+            System.out.println(Arrays.toString(objects));
+        }
+        System.out.println();
+
+        //Query can 6.5b:
+        System.out.println();
+        System.out.println("De query van 6.5b:");
+        Query query5b = manager.createNativeQuery("SELECT fr.naam, sum(fr.prijs), sum(fr.korting) FROM FactuurRegel fr " +
+                "JOIN Factuur f ON fr.factuur_id = f.id GROUP BY f.Transaction_date, fr.naam");
+        List<Object[]> result5b = query5b.getResultList();
+        for (Object[] objects : result5b) {
+            System.out.println(Arrays.toString(objects));
+        }
+        System.out.println();
+
+        //Query can 6.5c:
+        System.out.println();
+        System.out.println("De query van 6.5c:");
+        System.out.println("Deze artikelen worden het meest gekocht:");
+        Query query5c = manager.createNativeQuery("SELECT naam, count(naam) as hoeveelheid FROM FactuurRegel " +
+                "GROUP BY naam ORDER BY hoeveelheid DESC limit 3");
+        List<Object[]> result5c = query5c.getResultList();
+        for (Object[] objects : result5c) {
+            System.out.println(Arrays.toString(objects));
+        }
+        System.out.println();
+
+        //Query can 6.5d:
+        System.out.println();
+        System.out.println("De query van 6.5d:");
+        System.out.println("Deze artikelen leveren het meeste geld op:");
+        Query query5d = manager.createNativeQuery("SELECT naam, sum(prijs) as omzet FROM FactuurRegel " +
+                "GROUP BY naam ORDER BY omzet DESC limit 3");
+        List<Object[]> result5d = query5d.getResultList();
+        for (Object[] objects : result5d) {
             System.out.println(Arrays.toString(objects));
         }
         System.out.println();
