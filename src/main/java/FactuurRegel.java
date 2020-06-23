@@ -12,6 +12,7 @@ public class FactuurRegel implements Serializable {
     @ManyToOne(targetEntity = Factuur.class)
     private Factuur factuur;
 
+    @Embedded
     @Column(name = "Artikel", nullable = false)
     private Artikel artikel;
 

@@ -22,8 +22,8 @@ public class Factuur implements Serializable {
     private double totaal;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinTable(name = "regels", joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinTable(name = "regels", joinColumns = @JoinColumn(name = "factuur"),
+            inverseJoinColumns = @JoinColumn(name = "regel"))
     private List<FactuurRegel> regels = new ArrayList<>();
 
     private String artikelVanDeDag;
