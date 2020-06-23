@@ -1,7 +1,9 @@
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 @Entity
 @Table(name = "Factuur")
@@ -18,6 +20,11 @@ public class Factuur implements Serializable {
 
     @Column(name = "Totaalprijs", nullable = false)
     private double totaal;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinTable(name = "regels", joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id"))
+    private List<FactuurRegel> regels = new ArrayList<>();
 
     private String artikelVanDeDag;
 
@@ -69,8 +76,9 @@ public class Factuur implements Serializable {
                     }
                 }
             }
-            totaal = totaal - korting;
+            regels.add(new FactuurRegel(Factuur.this, a));
         }
+        totaal = totaal - korting;
     }
 
 
@@ -100,6 +108,12 @@ public class Factuur implements Serializable {
      * @return een printbaar bonnetje
      */
     public String toString() {
-        return "Betalingsnummer: " + id +  "\nDatum: " + datum + "\nKorting: " + korting + "\nTotaalbedrag: " + totaal ;
+        String factuur = "";
+        factuur += "Betalingsnummer: " + id +  "\nDatum: " + datum;
+        for(int i = 0; i<regels.size(); i++){
+            factuur += "\n" + regels.get(i).toString();
+        }
+        factuur += "\nKorting: " + korting + "\nTotaalbedrag: " + totaal;
+        return factuur;
     }
 }
