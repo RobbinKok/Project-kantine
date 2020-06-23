@@ -192,39 +192,39 @@ public class KantineSimulatie_2 {
             aantalGekochteArtikelen[i] = kantine.getKassa().aantalArtikelen();
             omzet[i] = kantine.getKassa().hoeveelheidGeldInKassa();
 
-            //Query van 3a:
-            System.out.println("De query van 3a:");
-            String queryV3aa = "SELECT Totaalprijs, Korting from Factuur";
-            Query query3a = manager.createNativeQuery(queryV3aa);
-            List<Object[]> result3a = query3a.getResultList();
-            for (i = 0; i < result3a.size(); i++){
-                System.out.println(Arrays.toString(result3a.get(i)));
-            }
-
-
-            //Query van 3b:
-            System.out.println("");
-            System.out.println("De query van 3b:");
-            Query query3b = manager.createNativeQuery("SELECT avg(Totaalprijs), sum(Korting) from Factuur group by Totaalprijs");
-            List<Object[]> result3b = query3b.getResultList();
-            result3b.forEach(r -> System.out.println(Arrays.toString(r)));
-
-
-            //Query van 3C:
-            System.out.println("");
-            System.out.println("De query van 3c:");
-            Query query3c = manager.createNativeQuery("SELECT  Totaalprijs, Korting from Factuur order by totaalprijs DESC limit 3");
-            List<Object[]> result3c = query3c.getResultList();
-            for (int j = 0; j < result3c.size(); j++){
-                System.out.println(Arrays.toString(result3c.get(j)));
-            }
-            System.out.println();
-
 
             // reset de kassa voor de volgende dag
             kantine.getKassa().resetKassa();
 
         }
+
+        //Query van 3a:
+        System.out.println("De query van 3a:");
+        String queryV3aa = "SELECT sum(Totaalprijs), sum(Korting) from Factuur";
+        Query query3a = manager.createNativeQuery(queryV3aa);
+        List<Object[]> result3a = query3a.getResultList();
+        for (int i = 0; i < result3a.size(); i++){
+            System.out.println(Arrays.toString(result3a.get(i)));
+        }
+
+
+        //Query van 3b:
+        System.out.println("");
+        System.out.println("De query van 3b:");
+        Query query3b = manager.createNativeQuery("SELECT avg(Totaalprijs), avg(Korting) from Factuur");
+        List<Object[]> result3b = query3b.getResultList();
+        result3b.forEach(r -> System.out.println(Arrays.toString(r)));
+
+
+        //Query van 3C:
+        System.out.println("");
+        System.out.println("De query van 3c:");
+        Query query3c = manager.createNativeQuery("SELECT  Totaalprijs, Korting from Factuur order by totaalprijs DESC limit 3");
+        List<Object[]> result3c = query3c.getResultList();
+        for (int j = 0; j < result3c.size(); j++){
+            System.out.println(Arrays.toString(result3c.get(j)));
+        }
+        System.out.println();
 
         System.out.println("Het gemiddeld aantal gekochte artikelen is " +
                 Administratie.berekenGemiddeldAantal(aantalGekochteArtikelen));
