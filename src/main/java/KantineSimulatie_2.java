@@ -204,8 +204,8 @@ public class KantineSimulatie_2 {
         String queryV3aa = "SELECT sum(Totaalprijs), sum(Korting) from Factuur";
         Query query3a = manager.createNativeQuery(queryV3aa);
         List<Object[]> result3a = query3a.getResultList();
-        for (int i = 0; i < result3a.size(); i++){
-            System.out.println(Arrays.toString(result3a.get(i)));
+        for (Object[] item : result3a) {
+            System.out.println(Arrays.toString(item));
         }
 
 
@@ -222,8 +222,18 @@ public class KantineSimulatie_2 {
         System.out.println("De query van 3c:");
         Query query3c = manager.createNativeQuery("SELECT  Totaalprijs, Korting from Factuur order by totaalprijs DESC limit 3");
         List<Object[]> result3c = query3c.getResultList();
-        for (int j = 0; j < result3c.size(); j++){
-            System.out.println(Arrays.toString(result3c.get(j)));
+        for (Object[] value : result3c) {
+            System.out.println(Arrays.toString(value));
+        }
+        System.out.println();
+
+        //Query van 6.5a:
+        System.out.println("");
+        System.out.println("De query van 6.5a:");
+        Query query5a = manager.createNativeQuery("SELECT naam, sum(prijs), sum(korting) FROM FactuurRegel GROUP BY naam");
+        List<Object[]> result5a = query5a.getResultList();
+        for (Object[] objects : result5a) {
+            System.out.println(Arrays.toString(objects));
         }
         System.out.println();
 

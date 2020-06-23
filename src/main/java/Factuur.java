@@ -26,6 +26,7 @@ public class Factuur implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "regel"))
     private List<FactuurRegel> regels = new ArrayList<>();
 
+    @Transient
     private String artikelVanDeDag;
 
     public Factuur() {
