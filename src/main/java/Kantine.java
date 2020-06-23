@@ -8,8 +8,6 @@ public class Kantine {
     private Kassa kassa;
     private KassaRij kassarij;
     private KantineAanbod kantineAanbod;
-    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY =
-            Persistence.createEntityManagerFactory("KantineSimulatie");
     private EntityManager manager;
 
     /**

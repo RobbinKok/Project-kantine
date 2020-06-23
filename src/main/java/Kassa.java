@@ -10,8 +10,6 @@ public class Kassa {
     private KassaRij kassaRij;
     private int aantalVerkochteItems = 0;
     private double totaalPrijs = 0;
-    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY =
-            Persistence.createEntityManagerFactory("KantineSimulatie");
     private EntityManager manager;
 
 
@@ -32,10 +30,9 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant) {
-        manager = ENTITY_MANAGER_FACTORY.createEntityManager();
         manager.getTransaction().begin();
         //klant.getKlant().setBetaalwijze(betaalwijze);
-        int aantalArtikelen = 0;
+        //int aantalArtikelen = 0;
         /*double totalePrijs = 0;
         double korting = 0;*/
 
